@@ -7,7 +7,7 @@ using System.Net.Mime;
 namespace OneCloud.S3.API.Controllers
 {
     /// <summary>
-    /// Взаимодействие с объектом
+    /// Р’Р·Р°РёРјРѕРґРµР№СЃС‚РІРёРµ СЃ РѕР±СЉРµРєС‚РѕРј
     /// </summary>
     [ApiController]
     [ApiConventionType(typeof(DefaultApiConventions))]
@@ -25,17 +25,17 @@ namespace OneCloud.S3.API.Controllers
         }
 
         /// <summary>
-        /// Получить объект
+        /// РџРѕР»СѓС‡РёС‚СЊ РѕР±СЉРµРєС‚
         /// </summary>
-        /// <param name="bucket">Наименование контейнера</param>
-        /// <param name="filePath">Наименование или путь к объекту</param>
-        /// <param name="contentType">MIME-тип объекта</param>
+        /// <param name="bucket">РќР°РёРјРµРЅРѕРІР°РЅРёРµ РєРѕРЅС‚РµР№РЅРµСЂР°</param>
+        /// <param name="filePath">РќР°РёРјРµРЅРѕРІР°РЅРёРµ РёР»Рё РїСѓС‚СЊ Рє РѕР±СЉРµРєС‚Сѓ</param>
+        /// <param name="contentType">MIME-С‚РёРї РѕР±СЉРµРєС‚Р°</param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        /// <response code="200">Вернет файл</response>
-        /// <response code="404">Если объект не найден</response>
-        /// <response code="400">Неправильные параметры запроса</response>
-        /// <response code="500">Что-то пошло не так</response>
+        /// <response code="200">Р’РµСЂРЅРµС‚ С„Р°Р№Р»</response>
+        /// <response code="404">Р•СЃР»Рё РѕР±СЉРµРєС‚ РЅРµ РЅР°Р№РґРµРЅ</response>
+        /// <response code="400">РќРµРїСЂР°РІРёР»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹ Р·Р°РїСЂРѕСЃР°</response>
+        /// <response code="500">Р§С‚Рѕ-С‚Рѕ РїРѕС€Р»Рѕ РЅРµ С‚Р°Рє</response>
         [HttpGet("{bucket}/{filePath}", Name = "GetObject")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -47,7 +47,7 @@ namespace OneCloud.S3.API.Controllers
 
             try
             {
-                _logger.LogInformation("Получаем из контейнера {Bucket} объект {Object} с типом {ContentType}", bucket,
+                _logger.LogInformation("РџРѕР»СѓС‡Р°РµРј РёР· РєРѕРЅС‚РµР№РЅРµСЂР° {Bucket} РѕР±СЉРµРєС‚ {Object} СЃ С‚РёРїРѕРј {ContentType}", bucket,
                     filePath, contentType);
 
                 var result = await _storageRepository.GetObjectAsync(bucket, filePath, cancellationToken);
@@ -64,15 +64,15 @@ namespace OneCloud.S3.API.Controllers
         }
 
         /// <summary>
-        /// Временная публичная ссылка на объект
+        /// Р’СЂРµРјРµРЅРЅР°СЏ РїСѓР±Р»РёС‡РЅР°СЏ СЃСЃС‹Р»РєР° РЅР° РѕР±СЉРµРєС‚
         /// </summary>
-        /// <param name="bucket">Наименование контейнера</param>
-        /// <param name="filePath">Наименование или путь к объекту</param>
-        /// <param name="expires">Дата окончания действия ссылки</param>
+        /// <param name="bucket">РќР°РёРјРµРЅРѕРІР°РЅРёРµ РєРѕРЅС‚РµР№РЅРµСЂР°</param>
+        /// <param name="filePath">РќР°РёРјРµРЅРѕРІР°РЅРёРµ РёР»Рё РїСѓС‚СЊ Рє РѕР±СЉРµРєС‚Сѓ</param>
+        /// <param name="expires">Р”Р°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ РґРµР№СЃС‚РІРёСЏ СЃСЃС‹Р»РєРё</param>
         /// <returns></returns>
-        /// <response code="200">Вернет ссылку на объект</response>
-        /// <response code="400">Неправильные параметры запроса</response>
-        /// <response code="500">Что-то пошло не так</response>
+        /// <response code="200">Р’РµСЂРЅРµС‚ СЃСЃС‹Р»РєСѓ РЅР° РѕР±СЉРµРєС‚</response>
+        /// <response code="400">РќРµРїСЂР°РІРёР»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹ Р·Р°РїСЂРѕСЃР°</response>
+        /// <response code="500">Р§С‚Рѕ-С‚Рѕ РїРѕС€Р»Рѕ РЅРµ С‚Р°Рє</response>
         [HttpGet("url/{bucket}/{filePath}", Name = "GetObjectUrl")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -102,16 +102,16 @@ namespace OneCloud.S3.API.Controllers
         }
 
         /// <summary>
-        /// Сохранить объект
+        /// РЎРѕС…СЂР°РЅРёС‚СЊ РѕР±СЉРµРєС‚
         /// </summary>
-        /// <param name="bucket">Наименование контейнера</param>
+        /// <param name="bucket">РќР°РёРјРµРЅРѕРІР°РЅРёРµ РєРѕРЅС‚РµР№РЅРµСЂР°</param>
         /// <param name="filePath"></param>
         /// <param name="file"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        /// <response code="201">Вернет полный путь к объекту и bool признак успешной операции</response>
-        /// <response code="400">Неправильные параметры запроса</response>
-        /// <response code="500">Что-то пошло не так</response>
+        /// <response code="201">Р’РµСЂРЅРµС‚ РїРѕР»РЅС‹Р№ РїСѓС‚СЊ Рє РѕР±СЉРµРєС‚Сѓ Рё bool РїСЂРёР·РЅР°Рє СѓСЃРїРµС€РЅРѕР№ РѕРїРµСЂР°С†РёРё</response>
+        /// <response code="400">РќРµРїСЂР°РІРёР»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹ Р·Р°РїСЂРѕСЃР°</response>
+        /// <response code="500">Р§С‚Рѕ-С‚Рѕ РїРѕС€Р»Рѕ РЅРµ С‚Р°Рє</response>
         [HttpPost("{bucket}/{filePath}", Name = "CreateObject")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -137,16 +137,16 @@ namespace OneCloud.S3.API.Controllers
         }
 
         /// <summary>
-        /// Меняет доступ к объекту
+        /// РњРµРЅСЏРµС‚ РґРѕСЃС‚СѓРї Рє РѕР±СЉРµРєС‚Сѓ
         /// </summary>
-        /// <param name="bucket">Наименование контейнера</param>
-        /// <param name="filePath">Наименование или путь к объекту</param>
-        /// <param name="isPublicRead">Признак публичного объекта</param>
+        /// <param name="bucket">РќР°РёРјРµРЅРѕРІР°РЅРёРµ РєРѕРЅС‚РµР№РЅРµСЂР°</param>
+        /// <param name="filePath">РќР°РёРјРµРЅРѕРІР°РЅРёРµ РёР»Рё РїСѓС‚СЊ Рє РѕР±СЉРµРєС‚Сѓ</param>
+        /// <param name="isPublicRead">РџСЂРёР·РЅР°Рє РїСѓР±Р»РёС‡РЅРѕРіРѕ РѕР±СЉРµРєС‚Р°</param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        /// <response code="200">Доступ к объекту изменен</response>
-        /// <response code="400">Неправильные параметры запроса</response>
-        /// <response code="500">Что-то пошло не так</response>
+        /// <response code="200">Р”РѕСЃС‚СѓРї Рє РѕР±СЉРµРєС‚Сѓ РёР·РјРµРЅРµРЅ</response>
+        /// <response code="400">РќРµРїСЂР°РІРёР»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹ Р·Р°РїСЂРѕСЃР°</response>
+        /// <response code="500">Р§С‚Рѕ-С‚Рѕ РїРѕС€Р»Рѕ РЅРµ С‚Р°Рє</response>
         [HttpPut("permission/{bucket}/{filePath}", Name = "ChangeObjectPermissions")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -172,17 +172,17 @@ namespace OneCloud.S3.API.Controllers
         }
 
         /// <summary>
-        /// Копировать объект
+        /// РљРѕРїРёСЂРѕРІР°С‚СЊ РѕР±СЉРµРєС‚
         /// </summary>
-        /// <param name="srcBucket">Наименование исходного контейнера</param>
-        /// <param name="srcFilePath">Наименование или путь исходного объекта</param>
-        /// <param name="destBucket">Наименование контейнера назначения</param>
-        /// <param name="destFilePath">Наименование или путь объекта назначения</param>
+        /// <param name="srcBucket">РќР°РёРјРµРЅРѕРІР°РЅРёРµ РёСЃС…РѕРґРЅРѕРіРѕ РєРѕРЅС‚РµР№РЅРµСЂР°</param>
+        /// <param name="srcFilePath">РќР°РёРјРµРЅРѕРІР°РЅРёРµ РёР»Рё РїСѓС‚СЊ РёСЃС…РѕРґРЅРѕРіРѕ РѕР±СЉРµРєС‚Р°</param>
+        /// <param name="destBucket">РќР°РёРјРµРЅРѕРІР°РЅРёРµ РєРѕРЅС‚РµР№РЅРµСЂР° РЅР°Р·РЅР°С‡РµРЅРёСЏ</param>
+        /// <param name="destFilePath">РќР°РёРјРµРЅРѕРІР°РЅРёРµ РёР»Рё РїСѓС‚СЊ РѕР±СЉРµРєС‚Р° РЅР°Р·РЅР°С‡РµРЅРёСЏ</param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        /// <response code="200">Объект скопирован</response>
-        /// <response code="400">Неправильные параметры запроса</response>
-        /// <response code="500">Что-то пошло не так</response>
+        /// <response code="200">РћР±СЉРµРєС‚ СЃРєРѕРїРёСЂРѕРІР°РЅ</response>
+        /// <response code="400">РќРµРїСЂР°РІРёР»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹ Р·Р°РїСЂРѕСЃР°</response>
+        /// <response code="500">Р§С‚Рѕ-С‚Рѕ РїРѕС€Р»Рѕ РЅРµ С‚Р°Рє</response>
         [HttpPut("copy/{srcBucket}/{srcFilePath}", Name = "CopyObject")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -208,15 +208,15 @@ namespace OneCloud.S3.API.Controllers
         }
 
         /// <summary>
-        /// Удалить объект
+        /// РЈРґР°Р»РёС‚СЊ РѕР±СЉРµРєС‚
         /// </summary>
-        /// <param name="bucket">Наименование контейнера</param>
-        /// <param name="filePath">Наименование или путь к объекту</param>
+        /// <param name="bucket">РќР°РёРјРµРЅРѕРІР°РЅРёРµ РєРѕРЅС‚РµР№РЅРµСЂР°</param>
+        /// <param name="filePath">РќР°РёРјРµРЅРѕРІР°РЅРёРµ РёР»Рё РїСѓС‚СЊ Рє РѕР±СЉРµРєС‚Сѓ</param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        /// <response code="200">Объект удален</response>
-        /// <response code="400">Неправильные параметры запроса</response>
-        /// <response code="500">Что-то пошло не так</response>
+        /// <response code="200">РћР±СЉРµРєС‚ СѓРґР°Р»РµРЅ</response>
+        /// <response code="400">РќРµРїСЂР°РІРёР»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹ Р·Р°РїСЂРѕСЃР°</response>
+        /// <response code="500">Р§С‚Рѕ-С‚Рѕ РїРѕС€Р»Рѕ РЅРµ С‚Р°Рє</response>
         [HttpDelete("{bucket}/{filePath}", Name = "DeleteObject")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
