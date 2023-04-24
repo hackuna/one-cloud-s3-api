@@ -10,6 +10,7 @@ builder.Services.AddOptions();
 builder.Services.Configure<StorageOptions>(builder.Configuration.GetSection("StorageOptions"));
 builder.Services.AddScoped<IStorageBucketRepository, StorageRepository>();
 builder.Services.AddScoped<IStorageObjectRepository, StorageRepository>();
+builder.Services.AddScoped<IStorageRepository, StorageRepository>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
