@@ -53,7 +53,7 @@ namespace OneCloud.S3.API.Controllers
                 var result = await _storageRepository.GetObjectAsync(bucket, filePath, cancellationToken);
                 if (result.Length == 0) return NotFound();
 
-                return File(result, filePath, Path.GetFileName(filePath));
+                return File(result, contentType, Path.GetFileName(filePath));
             }
             catch (Exception e)
             {
