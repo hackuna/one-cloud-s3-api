@@ -14,18 +14,18 @@ S3_SECRET_KEY={YourSecretKey}
 
 ### Local development in IDE
 
-Configure Environment variables at  ```"environmentVariables"``` section in file ```Properties/launchSettings.json```
+Configure Environment variables at  `"environmentVariables"` section in file `Properties/launchSettings.json`
 
 ```
 "environmentVariables": {
-	"ASPNETCORE_ENVIRONMENT": "Development",
-	"S3_SERVICE_URL": "https://1cloud.store",
-	"S3_ACCESS_KEY": "{YourDevAccesKey}",
-	"S3_SECRET_KEY": "{YourDevSecretKey}"
+    "ASPNETCORE_ENVIRONMENT": "Development",
+    "S3_SERVICE_URL": "https://1cloud.store",
+    "S3_ACCESS_KEY": "{YourDevAccesKey}",
+    "S3_SECRET_KEY": "{YourDevSecretKey}"
 }
 ```
 
-## Docker image
+## Docker image (linux-x64)
 
 | Container image repository | Last Build |
 | -- | -- |

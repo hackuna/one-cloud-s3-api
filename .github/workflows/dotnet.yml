@@ -15,7 +15,7 @@ on:
   workflow_dispatch:
 
 env:
-  APP_NAME: 'OneCloud.S3.Api'
+  APP_NAME: 'OneCloud.S3.API'
   DOTNET_VERSION: '7.0.x'
 
 jobs:
