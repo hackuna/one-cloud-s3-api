@@ -1,36 +1,40 @@
 using OneCloud.S3.API.Infrastructure;
 using OneCloud.S3.API.Infrastructure.Interfaces;
-using OneCloud.S3.API.Models.Configuration;
-using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.WebHost.CaptureStartupErrors(true);
 
 // Add services to the container.
-builder.Services.AddOptions();
-builder.Services.Configure<StorageOptions>(builder.Configuration.GetSection("StorageOptions"));
-builder.Services.AddScoped<IStorageBucketRepository, StorageRepository>();
-builder.Services.AddScoped<IStorageObjectRepository, StorageRepository>();
+builder.Services.AddProblemDetails();
+
+builder.Services
+    .AddScoped<IStorageBucketRepository, StorageRepository>()
+    .AddScoped<IStorageObjectRepository, StorageRepository>();
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(options =>
+
+if(builder.Environment.IsDevelopment() || builder.Environment.IsStaging())
 {
-    options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"));
-});
+    builder.Services.AddEndpointsApiExplorer();
+    builder.Services.AddSwaggerGen();
+}
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if(app.Environment.IsDevelopment() || app.Environment.IsStaging())
 {
+
+    app.UseExceptionHandler();
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+else
+{
+    app.UseExceptionHandler();
+}
 
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
+app.UseStatusCodePages();
 
 app.MapControllers();
 

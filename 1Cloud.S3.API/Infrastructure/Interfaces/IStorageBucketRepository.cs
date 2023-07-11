@@ -1,41 +1,40 @@
 ﻿using Amazon.S3.Model;
 
-namespace OneCloud.S3.API.Infrastructure.Interfaces
+namespace OneCloud.S3.API.Infrastructure.Interfaces;
+
+/// <summary>
+/// Buckets repository
+/// </summary>
+public interface IStorageBucketRepository
 {
     /// <summary>
-    /// Репозиторий для взаимодействия с контейнерами
+    /// Get list of buckets
     /// </summary>
-    public interface IStorageBucketRepository
-    {
-        /// <summary>
-        /// Получить список всех контейнеров
-        /// </summary>
-        /// <param name="cancellationToken"></param>
-        /// <returns></returns>
-        Task<List<S3Bucket>> ListBucketsAsync(CancellationToken cancellationToken);
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    Task<List<S3Bucket>> ListBucketsAsync(CancellationToken cancellationToken);
 
-        /// <summary>
-        /// Получить содержимое контейнера
-        /// </summary>
-        /// <param name="bucket">Наименование контейнера</param>
-        /// <param name="cancellationToken"></param>
-        /// <returns></returns>
-        Task<List<S3Object>> ListBucketContentAsync(string bucket, CancellationToken cancellationToken);
+    /// <summary>
+    /// Get bucket objects list
+    /// </summary>
+    /// <param name="bucket">Bucket name</param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    Task<List<S3Object>> ListBucketContentAsync(string bucket, CancellationToken cancellationToken);
 
-        /// <summary>
-        /// Создать контейнер
-        /// </summary>
-        /// <param name="bucket">Наименование контейнера</param>
-        /// <param name="cancellationToken"></param>
-        /// <returns></returns>
-        Task<bool> PutBucketAsync(string bucket, CancellationToken cancellationToken);
+    /// <summary>
+    /// Create bucket
+    /// </summary>
+    /// <param name="bucket">Bucket name</param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    Task<bool> PutBucketAsync(string bucket, CancellationToken cancellationToken);
 
-        /// <summary>
-        /// Удалить контейнер (должен быть предварительно очищен)
-        /// </summary>
-        /// <param name="bucket">Наименование контейнера</param>
-        /// <param name="cancellationToken"></param>
-        /// <returns></returns>
-        Task<bool> DeleteBucketAsync(string bucket, CancellationToken cancellationToken);
-    }
+    /// <summary>
+    /// Delete bucket (need to be empty)
+    /// </summary>
+    /// <param name="bucket">Bucket name</param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    Task<bool> DeleteBucketAsync(string bucket, CancellationToken cancellationToken);
 }

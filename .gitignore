@@ -348,3 +348,11 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+.idea/
+.fleet/
+.vscode/
+
+*.DotSettings
+
+packages.lock.json

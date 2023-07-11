@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+	
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<RootNamespace>OneCloud.S3.API</RootNamespace>
+		<UserSecretsId>39db8a47-cc3a-459f-a9c5-b7a938ca41ff</UserSecretsId>
+	</PropertyGroup>
+
+	<PropertyGroup Label="Docker Image Publish Profile">
+		<WebPublishMethod>Container</WebPublishMethod>
+		<EnableSdkContainerSupport>true</EnableSdkContainerSupport>
+		<ContainerBaseImage>mcr.microsoft.com/dotnet/nightly/aspnet:7.0-bookworm-slim</ContainerBaseImage>
+		<ContainerImageTags>1.0.0;latest</ContainerImageTags>
+	</PropertyGroup>
+
+	<ItemGroup Label="Docker Image Attributes">
+		<ContainerPort Include="8080" Type="tcp" />
+		<ContainerEnvironmentVariable Include="ASPNETCORE_ENVIRONMENT" />
+		<ContainerEnvironmentVariable Include="SERVICE_URL" />
+		<ContainerEnvironmentVariable Include="SERVICE_ACCESS_KEY" />
+		<ContainerEnvironmentVariable Include="SERVICE_SECRET_KEY" />
+		<ContainerLabel Include="org.opencontainers.image.base.name" Value="mcr.microsoft.com/dotnet/nightly/aspnet:7.0-bookworm-slim" />
+		<ContainerLabel Include="org.opencontainers.image.url" Value="https://ghcr.io/hackuna/one-cloud-s3-api:latest" />
+		<ContainerLabel Include="org.opencontainers.image.title" Value="1cloud.ru S3 API" />
+		<ContainerLabel Include="org.opencontainers.image.description" Value="Easy to use REST API Gateway for 1CLOUD.RU object storage (S3). Based on Microsoft.NET.Sdk.Web, Amazon.S3.SDK, Swagger, OpenApi" />
+		<ContainerLabel Include="org.opencontainers.image.version" Value="1.0.0" />
+		<ContainerLabel Include="org.opencontainers.image.authors" Value="hackuna" />
+		<ContainerLabel Include="org.opencontainers.image.vendor" Value="https://github.com/hackuna" />
+		<ContainerLabel Include="org.opencontainers.image.source" Value="https://github.com/hackuna/one-cloud-s3" />
+		<ContainerLabel Include="org.opencontainers.image.documentation" Value="https://github.com/hackuna/one-cloud-s3/wiki" />
+		<ContainerLabel Include="org.opencontainers.image.licenses" Value="GPL-3.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AWSSDK.S3" />
+		<PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+		<PackageReference Include="Microsoft.NET.Build.Containers" />
+		<PackageReference Include="Swashbuckle.AspNetCore" />
+	</ItemGroup>
+
+</Project>
