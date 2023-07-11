@@ -46,6 +46,7 @@ docker run -d \
 -p 5000:8080 \
 --volume=storage-secrets:/root/.aspnet/DataProtection-Keys \
 --env=ASPNETCORE_ENVIRONMENT=Production \
+--env=ASPNETCORE_URLS=http://+:8080 \
 --env=S3_SERVICE_URL=https://1cloud.store \
 --env=S3_ACCESS_KEY={YourAccesKey} \
 --env=S3_SECRET_KEY={YourSecretKey} \

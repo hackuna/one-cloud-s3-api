@@ -6,19 +6,23 @@
 		<UserSecretsId>39db8a47-cc3a-459f-a9c5-b7a938ca41ff</UserSecretsId>
 	</PropertyGroup>
 
-	<PropertyGroup Label="Docker Image Publish Profile">
+	<PropertyGroup Label="Container build support">
 		<WebPublishMethod>Container</WebPublishMethod>
 		<EnableSdkContainerSupport>true</EnableSdkContainerSupport>
 		<ContainerBaseImage>mcr.microsoft.com/dotnet/nightly/aspnet:7.0-bookworm-slim</ContainerBaseImage>
 		<ContainerImageTags>1.0.0;latest</ContainerImageTags>
 	</PropertyGroup>
 
-	<ItemGroup Label="Docker Image Attributes">
+	<ItemGroup Label="Environment variables">
 		<ContainerPort Include="8080" Type="tcp" />
 		<ContainerEnvironmentVariable Include="ASPNETCORE_ENVIRONMENT" />
-		<ContainerEnvironmentVariable Include="SERVICE_URL" />
-		<ContainerEnvironmentVariable Include="SERVICE_ACCESS_KEY" />
-		<ContainerEnvironmentVariable Include="SERVICE_SECRET_KEY" />
+		<ContainerEnvironmentVariable Include="ASPNETCORE_URLS" />
+		<ContainerEnvironmentVariable Include="S3_SERVICE_URL" />
+		<ContainerEnvironmentVariable Include="S3_ACCESS_KEY" />
+		<ContainerEnvironmentVariable Include="S3_SECRET_KEY" />
+	</ItemGroup>
+	
+	<ItemGroup Label="Container labels">
 		<ContainerLabel Include="org.opencontainers.image.base.name" Value="mcr.microsoft.com/dotnet/nightly/aspnet:7.0-bookworm-slim" />
 		<ContainerLabel Include="org.opencontainers.image.url" Value="https://ghcr.io/hackuna/one-cloud-s3-api:latest" />
 		<ContainerLabel Include="org.opencontainers.image.title" Value="1cloud.ru S3 API" />
@@ -31,7 +35,7 @@
 		<ContainerLabel Include="org.opencontainers.image.licenses" Value="GPL-3.0" />
 	</ItemGroup>
 
-	<ItemGroup>
+	<ItemGroup Label="Packages">
 		<PackageReference Include="AWSSDK.S3" />
 		<PackageReference Include="Microsoft.AspNetCore.OpenApi" />
 		<PackageReference Include="Microsoft.NET.Build.Containers" />
