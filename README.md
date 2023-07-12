@@ -40,7 +40,7 @@ dotnet publish --os linux --arch x64 -p:PublishProfile=DefaultContainer -c Relea
 ```
 
 | Container Image | Last Build | [CodeQL](https://codeql.github.com/) | Size |
-| -- | -- |
+| -- | -- | -- | -- |
 | 🐳 [ghcr.io/hackuna/one-cloud-s3-api:latest](https://github.com/hackuna/one-cloud-s3-api/pkgs/container/one-cloud-s3-api) | [![Build & Publish](https://github.com/hackuna/one-cloud-s3-api/actions/workflows/dotnet.yml/badge.svg)](https://github.com/hackuna/one-cloud-s3-api/actions/workflows/dotnet.yml) | [![CodeQL](https://github.com/hackuna/one-cloud-s3-api/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/hackuna/one-cloud-s3-api/actions/workflows/github-code-scanning/codeql) | 51.11 Mb |
 
 Pull image command:
