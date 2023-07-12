@@ -9,8 +9,12 @@
 	<PropertyGroup Label="Container build support">
 		<WebPublishMethod>Container</WebPublishMethod>
 		<EnableSdkContainerSupport>true</EnableSdkContainerSupport>
-		<ContainerBaseImage>mcr.microsoft.com/dotnet/nightly/aspnet:7.0-bookworm-slim</ContainerBaseImage>
-		<ContainerImageTags>1.0.0;latest</ContainerImageTags>
+		<ContainerBaseImage>mcr.microsoft.com/dotnet/nightly/runtime-deps:7.0-jammy-chiseled</ContainerBaseImage>
+		<ContainerRuntimeIdentifier>linux-x64</ContainerRuntimeIdentifier>
+		<ContainerImageTags>1.1.0;latest</ContainerImageTags>
+		<PublishTrimmed>true</PublishTrimmed>
+		<SelfContained>true</SelfContained>
+		<PublishSingleFile>true</PublishSingleFile>
 	</PropertyGroup>
 
 	<ItemGroup Label="Environment variables">
@@ -20,18 +24,20 @@
 		<ContainerEnvironmentVariable Include="S3_SERVICE_URL" />
 		<ContainerEnvironmentVariable Include="S3_ACCESS_KEY" />
 		<ContainerEnvironmentVariable Include="S3_SECRET_KEY" />
+		<ContainerEnvironmentVariable Include="SERVICE_API_URL" />
+		<ContainerEnvironmentVariable Include="SERVICE_API_KEY" />
 	</ItemGroup>
 	
 	<ItemGroup Label="Container labels">
-		<ContainerLabel Include="org.opencontainers.image.base.name" Value="mcr.microsoft.com/dotnet/nightly/aspnet:7.0-bookworm-slim" />
+		<ContainerLabel Include="org.opencontainers.image.base.name" Value="mcr.microsoft.com/dotnet/nightly/runtime-deps:7.0-jammy-chiseled" />
 		<ContainerLabel Include="org.opencontainers.image.url" Value="https://ghcr.io/hackuna/one-cloud-s3-api:latest" />
 		<ContainerLabel Include="org.opencontainers.image.title" Value="1cloud.ru S3 API" />
 		<ContainerLabel Include="org.opencontainers.image.description" Value="Easy to use REST API Gateway for 1CLOUD.RU object storage (S3). Based on Microsoft.NET.Sdk.Web, Amazon.S3.SDK, Swagger, OpenApi" />
-		<ContainerLabel Include="org.opencontainers.image.version" Value="1.0.0" />
+		<ContainerLabel Include="org.opencontainers.image.version" Value="1.1.0" />
 		<ContainerLabel Include="org.opencontainers.image.authors" Value="hackuna" />
 		<ContainerLabel Include="org.opencontainers.image.vendor" Value="https://github.com/hackuna" />
-		<ContainerLabel Include="org.opencontainers.image.source" Value="https://github.com/hackuna/one-cloud-s3" />
-		<ContainerLabel Include="org.opencontainers.image.documentation" Value="https://github.com/hackuna/one-cloud-s3/wiki" />
+		<ContainerLabel Include="org.opencontainers.image.source" Value="https://github.com/hackuna/one-cloud-s3-api" />
+		<ContainerLabel Include="org.opencontainers.image.documentation" Value="https://github.com/hackuna/one-cloud-s3-api/wiki" />
 		<ContainerLabel Include="org.opencontainers.image.licenses" Value="GPL-3.0" />
 	</ItemGroup>
 

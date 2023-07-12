@@ -52,7 +52,7 @@ jobs:
 
     - name: Build Container Image
       working-directory: ./${{env.APP_NAME}}/
-      run: dotnet publish -p:PublishProfile=DefaultContainer -p:ContainerImageName=ghcr.io/${{ github.repository }} -c Release
+      run: dotnet publish --os linux --arch x64 --self-contained true -c Release -p:PublishProfile=DefaultContainer -p:PublishSingleFile=true -p:ContainerImageName=ghcr.io/${{ github.repository }}
 
     - name: Push Image to Container Registry
       run: docker push ghcr.io/${{ github.repository }} --all-tags
