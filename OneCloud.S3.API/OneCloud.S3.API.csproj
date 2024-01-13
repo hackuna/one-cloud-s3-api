@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 	
 	<PropertyGroup>
-		<TargetFramework>net7.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<RootNamespace>OneCloud.S3.API</RootNamespace>
 		<UserSecretsId>39db8a47-cc3a-459f-a9c5-b7a938ca41ff</UserSecretsId>
 	</PropertyGroup>
@@ -9,8 +9,8 @@
 	<PropertyGroup Label="Container build support">
 		<WebPublishMethod>Container</WebPublishMethod>
 		<EnableSdkContainerSupport>true</EnableSdkContainerSupport>
-		<ContainerBaseImage>mcr.microsoft.com/dotnet/nightly/aspnet:7.0-bookworm-slim</ContainerBaseImage>
-		<ContainerImageTags>1.0.0;latest</ContainerImageTags>
+		<ContainerBaseImage>mcr.microsoft.com/dotnet/aspnet:8.0-jammy-chiseled</ContainerBaseImage>
+		<ContainerImageTags>2.0.0;latest</ContainerImageTags>
 	</PropertyGroup>
 
 	<ItemGroup Label="Environment variables">
@@ -23,11 +23,11 @@
 	</ItemGroup>
 	
 	<ItemGroup Label="Container labels">
-		<ContainerLabel Include="org.opencontainers.image.base.name" Value="mcr.microsoft.com/dotnet/nightly/aspnet:7.0-bookworm-slim" />
+		<ContainerLabel Include="org.opencontainers.image.base.name" Value="mcr.microsoft.com/dotnet/aspnet:8.0-jammy-chiseled" />
 		<ContainerLabel Include="org.opencontainers.image.url" Value="https://ghcr.io/hackuna/one-cloud-s3-api:latest" />
 		<ContainerLabel Include="org.opencontainers.image.title" Value="1cloud.ru S3 API" />
 		<ContainerLabel Include="org.opencontainers.image.description" Value="Easy to use REST API Gateway for 1CLOUD.RU object storage (S3). Based on Microsoft.NET.Sdk.Web, Amazon.S3.SDK, Swagger, OpenApi" />
-		<ContainerLabel Include="org.opencontainers.image.version" Value="1.0.0" />
+		<ContainerLabel Include="org.opencontainers.image.version" Value="2.0.0" />
 		<ContainerLabel Include="org.opencontainers.image.authors" Value="hackuna" />
 		<ContainerLabel Include="org.opencontainers.image.vendor" Value="https://github.com/hackuna" />
 		<ContainerLabel Include="org.opencontainers.image.source" Value="https://github.com/hackuna/one-cloud-s3" />

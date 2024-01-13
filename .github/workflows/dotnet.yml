@@ -16,7 +16,7 @@ on:
 
 env:
   APP_NAME: 'OneCloud.S3.API'
-  DOTNET_VERSION: '7.0.x'
+  DOTNET_VERSION: '8.0.x'
 
 jobs:
   build-and-publish:

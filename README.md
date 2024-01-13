@@ -1,6 +1,6 @@
 # 1cloud S3 API
 
-An example of interaction with cloud object storage from [1cloud.ru](https://1cloud.ru/ref/339507) using the Amazon S3 protocol, using C# and .NET 7.
+An example of interaction with cloud object storage from [1cloud.ru](https://1cloud.ru/ref/339507) using the Amazon S3 protocol, using C# and .NET 8.
 
 ## Configuration
 
@@ -8,7 +8,7 @@ An example of interaction with cloud object storage from [1cloud.ru](https://1cl
 
 ```
 S3_SERVICE_URL=https://1cloud.store
-S3_ACCESS_KEY={YourAccesKey}
+S3_ACCESS_KEY={YourAccessKey}
 S3_SECRET_KEY={YourSecretKey}
 ```
 
@@ -20,7 +20,7 @@ Configure Environment variables at  `"environmentVariables"` section in file `
 "environmentVariables": {
     "ASPNETCORE_ENVIRONMENT": "Development",
     "S3_SERVICE_URL": "https://1cloud.store",
-    "S3_ACCESS_KEY": "{YourDevAccesKey}",
+    "S3_ACCESS_KEY": "{YourDevAccessKey}",
     "S3_SECRET_KEY": "{YourDevSecretKey}"
 }
 ```
@@ -48,7 +48,7 @@ docker run -d \
 --env=ASPNETCORE_ENVIRONMENT=Production \
 --env=ASPNETCORE_URLS=http://+:8080 \
 --env=S3_SERVICE_URL=https://1cloud.store \
---env=S3_ACCESS_KEY={YourAccesKey} \
+--env=S3_ACCESS_KEY={YourAccessKey} \
 --env=S3_SECRET_KEY={YourSecretKey} \
 ghcr.io/hackuna/one-cloud-s3-api:latest
 ```
