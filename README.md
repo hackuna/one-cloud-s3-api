@@ -31,7 +31,7 @@ Configure Environment variables at  `"environmentVariables"` section in file `
 
 ## Docker image
 
-Based on [nightly/runtime-deps:7.0-jammy-chiseled](https://mcr.microsoft.com/en-us/product/dotnet/nightly/runtime-deps/about) (Ubuntu 22.04, ×64)
+Based on [dotnet/runtime-deps:8.0-jammy-chiseled](https://mcr.microsoft.com/en-us/product/dotnet/runtime-deps/about) (Ubuntu 22.04, ×64)
 
 ### Build container image command
 

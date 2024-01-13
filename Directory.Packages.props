@@ -3,9 +3,9 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="AWSSDK.S3" Version="3.7.107.5" />
-    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="7.0.9" />
-    <PackageVersion Include="Microsoft.NET.Build.Containers" Version="7.0.306" />
+    <PackageVersion Include="AWSSDK.S3" Version="3.7.305.10" />
+    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="8.0.1" />
+    <PackageVersion Include="Microsoft.NET.Build.Containers" Version="8.0.101" />
     <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 </Project>
