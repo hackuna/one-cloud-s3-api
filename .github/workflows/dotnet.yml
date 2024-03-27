@@ -28,12 +28,12 @@ jobs:
 
     steps:
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@main
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
 
     - name: Check out the repo
-      uses: actions/checkout@v3
+      uses: actions/checkout@main
 
     - name: Restore dependencies
       working-directory: ./${{env.APP_NAME}}/
@@ -44,7 +44,7 @@ jobs:
       run: dotnet build --no-restore --configuration Release
 
     - name: Log in to Container Registry
-      uses: docker/login-action@v2
+      uses: docker/login-action@master
       with:
         registry: ghcr.io
         username: ${{ github.actor }}
