@@ -1,8 +1,12 @@
+using Microsoft.AspNetCore.Http.Features;
 using OneCloud.S3.API.Infrastructure;
 using OneCloud.S3.API.Infrastructure.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.WebHost.CaptureStartupErrors(true);
+
+builder.WebHost.ConfigureKestrel(options => options.Limits.MaxRequestBodySize = long.MaxValue);
+builder.Services.Configure<FormOptions>(options => options.MultipartBodyLengthLimit = long.MaxValue);
 
 // Add services to the container.
 builder.Services.AddProblemDetails();

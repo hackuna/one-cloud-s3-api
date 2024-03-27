@@ -63,6 +63,8 @@ public class ObjectsController(IStorageObjectRepository storageRepository) : Con
     /// <returns></returns>
     [HttpPost("{bucket}/{filePath}", Name = "CreateObject")]
     [ApiConventionMethod(typeof(DefaultApiConventions), nameof(DefaultApiConventions.Post))]
+    [DisableRequestSizeLimit]
+    [RequestSizeLimit(long.MaxValue)]
     public async Task<IActionResult> PostObject(string bucket, string filePath, [Required] IFormFile file, CancellationToken cancellationToken)
     {
         await _storageRepository.PutObjectAsync(bucket, filePath, file, cancellationToken);

@@ -10,7 +10,7 @@
 		<WebPublishMethod>Container</WebPublishMethod>
 		<EnableSdkContainerSupport>true</EnableSdkContainerSupport>
 		<ContainerBaseImage>mcr.microsoft.com/dotnet/aspnet:8.0-jammy-chiseled</ContainerBaseImage>
-		<ContainerImageTags>2.0.0;latest</ContainerImageTags>
+		<ContainerImageTags>2.1.0;latest</ContainerImageTags>
 	</PropertyGroup>
 
 	<ItemGroup Label="Environment variables">
@@ -27,7 +27,7 @@
 		<ContainerLabel Include="org.opencontainers.image.url" Value="https://ghcr.io/hackuna/one-cloud-s3-api:latest" />
 		<ContainerLabel Include="org.opencontainers.image.title" Value="1cloud.ru S3 API" />
 		<ContainerLabel Include="org.opencontainers.image.description" Value="Easy to use REST API Gateway for 1CLOUD.RU object storage (S3). Based on Microsoft.NET.Sdk.Web, Amazon.S3.SDK, Swagger, OpenApi" />
-		<ContainerLabel Include="org.opencontainers.image.version" Value="2.0.0" />
+		<ContainerLabel Include="org.opencontainers.image.version" Value="2.1.0" />
 		<ContainerLabel Include="org.opencontainers.image.authors" Value="hackuna" />
 		<ContainerLabel Include="org.opencontainers.image.vendor" Value="https://github.com/hackuna" />
 		<ContainerLabel Include="org.opencontainers.image.source" Value="https://github.com/hackuna/one-cloud-s3" />
